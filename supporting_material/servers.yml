@@ -124,9 +124,9 @@ Resources:
         Fn::ImportValue:
           Fn::Sub: "${EnvironmentName}-VPCID"
 
-# Outputs:
-#   Website:
-#     Value: !Sub "http://${WebAppLB.DNSName}"
-#     Description: "Public DNS of LoadBalancer"
-#     Export:
-#       Name: !Sub "${EnvironmentName}-Public_DNS-URL"
+Outputs:
+  StackVPC:
+    Description: Public DNS of LoadBalancer
+    Value: !Sub "http://${WebAppLB.DNSName}"
+    Export:
+      Name: !Sub "${EnvironmentName}-Public-DNS-URL"
