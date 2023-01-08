@@ -39,19 +39,19 @@ Parameters:
 Resources:
     UdagramIAMBucketRole:
         Type: AWS::IAM::Role
-        Properties: 
+        Properties:
+            ManagedPolicyArns: 
+                - "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
             AssumeRolePolicyDocument:
                 Version: "2012-10-17"
                 Statement:
-                - Effect: Allow
-                    Principal:
-                    Service:
-                        - ec2.amazonaws.com
-                    Action:
-                    - 'sts:AssumeRole'
+                    -   Effect: Allow
+                        Principal:
+                            Service:
+                                - ec2.amazonaws.com
+                        Action:
+                        - 'sts:AssumeRole'
             Description: "READ ONLY IAM role for s3"
-            ManagedPolicyArns: 
-                - "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
             Path: "/"
     UdagramProfile:
         Type: AWS::IAM::InstanceProfile
