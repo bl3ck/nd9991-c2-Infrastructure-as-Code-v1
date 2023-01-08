@@ -60,6 +60,8 @@ Resources:
       ImageId: ami-0747bdcabd34c712a
       # ToDo: Change the key-pair name, as applicable to you. 
       # KeyName: nd9990_keypair 
+      IamInstanceProfile:
+        Fn::ImportValue: !Sub "${EnvironmentName}-IAM-NAME"
       SecurityGroups:
       - Ref: WebServerSecGroup
       InstanceType: t3.medium
@@ -123,6 +125,12 @@ Resources:
       VpcId: 
         Fn::ImportValue:
           Fn::Sub: "${EnvironmentName}-VPCID"
+# Outputs:
+#   Website:
+#     Description: "Public DNS of LoadBalancer"
+#     Value: !Sub "http://${WebAppLB.DNSName}"
+#     Export:
+#       Name: !Sub "${EnvironmentName}-Public_DNS-URL"
 
 Outputs:
   StackVPC:
