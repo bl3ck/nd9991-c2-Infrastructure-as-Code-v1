@@ -221,7 +221,16 @@ Resources:
             SubnetId: !Ref PrivateSubnet2
 
 Outputs: 
-
+    UdagramIAMBucketRole:
+        Description: "Allow EC2 instances to manage web app s3"
+        Value: !Ref UdagramProfile
+        Export:
+            Name: !Sub ${EnvironmentName}-IAM-NAME
+    UdagramProfile:
+        Description: "IAM Instance Profile Arn"
+        Value: !Ref UdagramProfile
+        Export:
+            Name: !Sub ${EnvironmentName}-IAM-ARN
     VPC: 
         Description: A reference to the created VPC
         Value: !Ref VPC
