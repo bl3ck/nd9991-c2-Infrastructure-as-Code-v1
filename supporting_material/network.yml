@@ -228,7 +228,7 @@ Outputs:
             Name: !Sub ${EnvironmentName}-IAM-NAME
     UdagramIAMBucketRoleArn:
         Description: "IAM Instance Profile Arn"
-        Value: !Ref UdagramIAMBucketRole.Arn
+        Value: !GetAtt UdagramIAMBucketRole.Arn
         Export:
             Name: !Sub ${EnvironmentName}-IAM-ARN
     VPC: 
