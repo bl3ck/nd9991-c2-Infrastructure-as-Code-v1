@@ -53,7 +53,7 @@ Resources:
                         - 'sts:AssumeRole'
             Description: "READ ONLY IAM role for s3"
             Path: "/"
-    UdagramProfile:
+    UdagramIAMProfile:
         Type: AWS::IAM::InstanceProfile
         Properties:
             Path: "/"
@@ -223,12 +223,12 @@ Resources:
 Outputs: 
     UdagramIAMBucketRole:
         Description: "Allow EC2 instances to manage web app s3"
-        Value: !Ref UdagramProfile
+        Value: !Ref UdagramIAMProfile
         Export:
             Name: !Sub ${EnvironmentName}-IAM-NAME
-    UdagramProfile:
+    UdagramIAMBucketRoleArn:
         Description: "IAM Instance Profile Arn"
-        Value: !Ref UdagramProfile
+        Value: !Ref UdagramIAMBucketRole.Arn
         Export:
             Name: !Sub ${EnvironmentName}-IAM-ARN
     VPC: 
